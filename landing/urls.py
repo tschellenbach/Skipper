@@ -4,6 +4,6 @@ from django.conf.urls import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('',
-    (r'^', include('landing.urls')),
+urlpatterns = patterns('landing.views',
+    url(r'^$', 'homepage', name='homepage'),
 )

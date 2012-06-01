@@ -1,3 +1,16 @@
+
+import sys
+import os
+TEST_RUNNING = 'test' in sys.argv or 'jenkins' in sys.argv or 'test_coverage' in sys.argv
+
+BASE_ROOT = os.path.abspath(
+    os.path.join(os.path.split(__file__)[0], '..'))
+MEDIA_ROOT = os.path.join(BASE_ROOT, 'media/')
+STATIC_ROOT = os.path.join(BASE_ROOT, 'static/')
+DOCS_ROOT = os.path.join(BASE_ROOT, 'docs/')
+TEMPLATE_ROOT = os.path.join(BASE_ROOT, 'templates/')
+
+
 # Django settings for core project.
 
 DEBUG = True
@@ -91,6 +104,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'framework.middleware.ViewDefaultMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -98,6 +112,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'framework.middleware.ViewDefaultResponseMiddleware',
 )
 
 ROOT_URLCONF = 'core.urls'
@@ -106,6 +121,7 @@ ROOT_URLCONF = 'core.urls'
 WSGI_APPLICATION = 'core.wsgi.application'
 
 TEMPLATE_DIRS = (
+     TEMPLATE_ROOT,
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -152,3 +168,5 @@ LOGGING = {
         },
     }
 }
+
+

@@ -1,0 +1,35 @@
+# Django
+django==1.4
+
+# South for migrations
+south
+
+# Django Facebook for registration and authentication 
+django_facebook
+
+# Python imaging library
+PIL
+
+# Sentry for logging errors
+raven==1.7.6
+
+# Feature switching
+gargoyle
+
+# Translations
+Babel
+polib
+python-transifex
+
+# sane http requests
+requests
+
+#redis related functionality
+git+http://github.com/tschellenbach/nydus@v10.0.1#egg=nydus==10.0.1
+hiredis
+redis
+
+# PostgreSQL backend
+psycopg2
+
+

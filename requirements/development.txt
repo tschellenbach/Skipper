@@ -1,0 +1,14 @@
+-r base.txt
+
+# Debug toolbar
+django-debug-toolbar
+
+# For unit testing
+django-extensions
+django_coverage
+mock
+pygments
+sqlparse
+
+# Fabric 
+fabric
