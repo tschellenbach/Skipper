@@ -1,0 +1,44 @@
+{% load compress %}
+
+{% block html_head %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraph.org/schema/">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="google-site-verification" content="AFZ32TE2QASJSxtdCdFP0Ed8JiNxw39-Y6Rxxcxy7HQ" />
+    <title>{% block title %}{% endblock %}{% block aftertitle %}{% endblock %}</title>
+
+    {% block cssfiles %}
+    {% compress css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.less" charset="utf-8">
+    {% endcompress %}
+    {% endblock %}
+
+    {% block robots %}{% endblock %}
+    {% block metadesc %}{% endblock %}
+    {% block additional_head %}{% endblock %}
+{% endblock %}
+
+<body {% block body_additional %}{% endblock %}>
+    {% block content %}
+    {% endblock %}
+    
+    {% block html_body_bottom %}
+    {% compress js %}
+    <script type="text/javascript" charset="utf-8">
+        /* <![CDATA[ */
+        mediaUrl = '{{ MEDIA_URL }}';
+        {% block pre_javascript %}
+        {% endblock pre_javascript %}
+        
+        function initialize($) {
+            {% block javascript_onload %}
+            {% endblock javascript_onload %}
+        }
+        {% block javascript %}
+        {% endblock javascript %}
+        /* ]]> */
+    </script>
+    {% endcompress %}
+    {% endblock %}
+</body>
+</html>

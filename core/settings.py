@@ -9,7 +9,7 @@ MEDIA_ROOT = os.path.join(BASE_ROOT, 'media/')
 STATIC_ROOT = os.path.join(BASE_ROOT, 'static/')
 DOCS_ROOT = os.path.join(BASE_ROOT, 'docs/')
 TEMPLATE_ROOT = os.path.join(BASE_ROOT, 'templates/')
-
+COMPRESS_ROOT = STATIC_ROOT
 
 # Django settings for core project.
 
@@ -78,6 +78,11 @@ STATIC_ROOT = ''
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
+
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lessc {infile} {outfile}'),
+)
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -90,7 +95,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -103,16 +108,20 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+#DEBUG toolbar related
+INTERNAL_IPS = ('127.0.0.1',)
+
 MIDDLEWARE_CLASSES = (
-    'framework.middleware.ViewDefaultMiddleware',
+    #'framework.middleware.ViewDefaultMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'framework.middleware.ViewDefaultResponseMiddleware',
+    #'framework.middleware.ViewDefaultResponseMiddleware',
 )
 
 ROOT_URLCONF = 'core.urls'
@@ -138,7 +147,12 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'debug_toolbar',
+    'compressor',
 )
+
+COMPRESS_ENABLED = True
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

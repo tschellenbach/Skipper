@@ -144,7 +144,7 @@ def content_admin_env(function=None, require_superuser=False, module=None):
 
 
 
-def fashiolista_env(function=None, login_required=False):
+def view_defaults(function=None, login_required=False):
     '''
     View decorator that automatically adds context and renders response
 
@@ -161,7 +161,7 @@ def fashiolista_env(function=None, login_required=False):
     def _env(request, *args, **kwargs):
         request.ajax = request.is_ajax() or bool(int(request.REQUEST.get('ajax', 0)))
         request.context = None
-        request.jinja = True
+        request.jinja = False
         try:
             name = function.__name__
             app = function.__module__.split('.')[0]
