@@ -29,7 +29,7 @@
     <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}js/jquery-1.7.2.js">
     <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}js/core.js">
     {% endcompress %}
-    {% compress js %}
+    {% compress js inline %}
     <script type="text/javascript" charset="utf-8">
         /* <![CDATA[ */
         mediaUrl = '{{ MEDIA_URL }}';

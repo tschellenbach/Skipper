@@ -146,6 +146,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'debug_toolbar',
     'compressor',
+    'south',
 )
 
 COMPRESS_ENABLED = True
