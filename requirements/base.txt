@@ -14,7 +14,10 @@ django_facebook
 PIL
 
 # Sentry for logging errors
-raven==1.7.6
+raven
+
+# Replacement for manage.py runserver
+django-devserver
 
 # Feature switching
 gargoyle

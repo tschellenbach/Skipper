@@ -142,10 +142,14 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    #cramer stuff
+    'devserver',
     'debug_toolbar',
-    'bootstrap',
     'gargoyle',
     'nexus', #Unfortunately gargoyle pretty much requires this
+    #end cramer stuff, this guy is making the rest of us look bad :)
+    #thanks david, big push for the django project!
+    'bootstrap',
     'compressor',
     'south',
 )
