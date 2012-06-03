@@ -109,7 +109,6 @@ TEMPLATE_LOADERS = (
 INTERNAL_IPS = ('127.0.0.1',)
 
 MIDDLEWARE_CLASSES = (
-    #'framework.middleware.ViewDefaultMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -118,7 +117,6 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware'
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'framework.middleware.ViewDefaultResponseMiddleware',
 )
 
 ROOT_URLCONF = 'core.urls'
@@ -141,9 +139,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
     'debug_toolbar',
     'compressor',
     'south',
