@@ -79,9 +79,6 @@ STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 
-COMPRESS_PRECOMPILERS = (
-    ('text/less', 'lessc {infile} {outfile}'),
-)
 
 # Additional locations of static files
 STATICFILES_DIRS = (
