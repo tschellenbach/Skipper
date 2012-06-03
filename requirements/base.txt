@@ -4,7 +4,7 @@ django==1.4
 # South for migrations
 south
 
-# bootstrap to make things pretty
+# django bootstrap to make forms pretty
 git+git://github.com/earle/django-bootstrap.git
 
 # Django Facebook for registration and authentication 
