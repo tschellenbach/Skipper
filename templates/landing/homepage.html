@@ -1,5 +1,9 @@
 {% extends '_base.html' %}
 {% load gargoyle_tags %}
+{% load cms_tags menu_tags %}
+
+
+
 {% block content %}
 
 
@@ -40,8 +44,8 @@
           <p><a class="btn" href="#">View details &raquo;</a></p>
         </div>
         <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <h2>CMS Demo</h2>
+           {% show_placeholder "teaser" "teaser-cms-page" %}
           <p><a class="btn" href="#">View details &raquo;</a></p>
        </div>
         <div class="span4">

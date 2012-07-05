@@ -14,6 +14,11 @@ COMPRESS_ROOT = STATIC_ROOT
 # Django settings for core project.
 
 DEBUG = True
+
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False,
+}
+
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -105,6 +110,27 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+#Context processors
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'cms.context_processors.media',
+    'sekizai.context_processors.sekizai',
+)
+
+
+CMS_TEMPLATES = (
+    ('template_1.html', 'Template One'),
+    ('template_2.html', 'Template Two'),
+)
+LANGUAGES = [
+    ('en', 'English'),
+]
+
 #DEBUG toolbar related
 INTERNAL_IPS = ('127.0.0.1',)
 
@@ -114,9 +140,14 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #cms stuff
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    #'cms.middleware.media.PlaceholderMediaMiddleware',
 )
 
 ROOT_URLCONF = 'core.urls'
@@ -152,6 +183,22 @@ INSTALLED_APPS = (
     'bootstrap',
     'compressor',
     'south',
+    
+    #cms related stuff
+    'cms',
+    'mptt',
+    'menus',
+    'sekizai',
+    'reversion',
+    
+    #cms plugins
+    'cms.plugins.file',
+    'cms.plugins.text',
+    'cms.plugins.link',
+    'cms.plugins.picture',
+    'cms.plugins.snippet',
+    
+    
 )
 
 COMPRESS_ENABLED = True

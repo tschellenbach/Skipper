@@ -16,6 +16,12 @@ PIL
 # Sentry for logging errors
 raven
 
+# CMS because that's always handy
+django-cms
+
+# Reversion because it's great to not lose changes
+reversion
+
 # Replacement for manage.py runserver
 django-devserver
 
