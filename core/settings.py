@@ -120,7 +120,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'cms.context_processors.media',
     'sekizai.context_processors.sekizai',
+    'django_facebook.context_processors.facebook',
 )
+
+AUTHENTICATION_BACKENDS = (
+    'django_facebook.auth_backends.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
 
 CMS_TEMPLATES = (
@@ -133,6 +140,11 @@ LANGUAGES = [
 
 #DEBUG toolbar related
 INTERNAL_IPS = ('127.0.0.1',)
+
+#Facebook security settings
+FACEBOOK_APP_ID = 'replaceme'
+FACEBOOK_APP_SECRET = 'replaceme2'
+
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -198,6 +210,8 @@ INSTALLED_APPS = (
     'cms.plugins.picture',
     'cms.plugins.snippet',
     
+    #facebook login
+    'django_facebook',
     
 )
 

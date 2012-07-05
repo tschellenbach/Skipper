@@ -3,6 +3,9 @@
 # Debug toolbar
 django-debug-toolbar
 
+#jenkins
+#TOOD, enable :) django-jenkins
+
 # For unit testing
 django-extensions
 django_coverage

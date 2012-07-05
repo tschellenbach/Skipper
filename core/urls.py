@@ -9,6 +9,8 @@ from django.conf import settings
 
 urlpatterns = patterns('',
     (r'^', include('landing.urls')),
+    (r'^facebook/', include('django_facebook.urls')),
+    (r'^accounts/', include('django_facebook.auth_urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^', include('cms.urls')),
     (r'^nexus/', include(nexus.site.urls)),

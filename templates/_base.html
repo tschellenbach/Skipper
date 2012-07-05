@@ -13,6 +13,7 @@
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css" charset="utf-8">
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.css" charset="utf-8">
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/core.css" charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/facebook.css" charset="utf-8">
     {% endcompress %}
     {% endblock %}
 
@@ -26,9 +27,14 @@
     {% endblock %}
     
     {% block html_body_bottom %}
+    <div id="fb-root"></div>
+    
     {% compress js %}
     <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}js/jquery-1.7.2.js">
     <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}js/core.js">
+    {% endcompress %}
+    {% compress js %}
+    <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}js/facebook.js">
     {% endcompress %}
     {% compress js inline %}
     <script type="text/javascript" charset="utf-8">
@@ -42,8 +48,21 @@
             {% endblock javascript_onload %}
         }
         jQuery().ready(initialize);
+        {% block facebook_js %}
+            facebookAppId = '{{ FACEBOOK_APP_ID }}';
+            facebookDefaultScope = {{ FACEBOOK_DEFAULT_SCOPE_JS }};
+            staticUrl = '{{ STATIC_URL }}';
+            function facebookJSLoaded(){
+                FB.init({appId: facebookAppId, status: false, cookie: true, xfbml: true, oauth: true});
+            }
+            window.fbAsyncInit = facebookJSLoaded;
+            F = new facebookClass(facebookAppId);
+            F.load();
+        {% endblock %}
+        
         {% block javascript %}
         {% endblock javascript %}
+        
         /* ]]> */
     </script>
     {% endcompress %}
