@@ -195,6 +195,8 @@ INSTALLED_APPS = (
     'bootstrap',
     'compressor',
     'south',
+    #celery which is awesome
+    'djcelery',
     
     #cms related stuff
     'cms',
@@ -247,4 +249,7 @@ LOGGING = {
     }
 }
 
-
+#Celery related settings
+CELERY_ALWAYS_EAGER = True
+import djcelery
+djcelery.setup_loader()
