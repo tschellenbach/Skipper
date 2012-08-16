@@ -1,0 +1,51 @@
+# Django
+django==1.4
+
+# South for migrations
+south
+
+# django bootstrap to make forms pretty
+git+git://github.com/earle/django-bootstrap.git
+
+# Django Facebook for registration and authentication 
+django_facebook
+
+# Python imaging library
+PIL
+
+# Sentry for logging errors
+raven
+
+# CMS because that's always handy
+django-cms
+
+# Reversion because it's great to not lose changes
+reversion
+
+# Replacement for manage.py runserver
+django-devserver
+
+# Feature switching
+gargoyle
+
+# Translations
+Babel
+polib
+python-transifex
+
+# sane http requests
+requests
+
+#redis related functionality
+git+http://github.com/tschellenbach/nydus@v10.0.1#egg=nydus==10.0.1
+hiredis
+redis
+
+#Celery for async tasks
+Celery
+django-celery
+
+# PostgreSQL backend
+psycopg2
+
+

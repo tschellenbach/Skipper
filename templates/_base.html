@@ -1,0 +1,71 @@
+{% load compress %}
+{% load gargoyle_tags %}
+
+{% block html_head %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraph.org/schema/">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}{% block aftertitle %}{% endblock %}</title>
+
+    {% block cssfiles %}
+    {% compress css %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css" charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.css" charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/core.css" charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/facebook.css" charset="utf-8">
+    {% endcompress %}
+    {% endblock %}
+
+    {% block robots %}{% endblock %}
+    {% block metadesc %}{% endblock %}
+    {% block additional_head %}{% endblock %}
+{% endblock %}
+
+<body {% block body_additional %}{% endblock %}>
+    {% block content %}
+    {% endblock %}
+    
+    {% block html_body_bottom %}
+    <div id="fb-root"></div>
+    
+    {% compress js %}
+    <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}js/jquery-1.7.2.js">
+    <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}js/core.js">
+    {% endcompress %}
+    {% compress js %}
+    <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}js/facebook.js">
+    {% endcompress %}
+    {% compress js inline %}
+    <script type="text/javascript" charset="utf-8">
+        /* <![CDATA[ */
+        mediaUrl = '{{ MEDIA_URL }}';
+        {% block pre_javascript %}
+        {% endblock pre_javascript %}
+        
+        function initialize($) {
+            {% block javascript_onload %}
+            {% endblock javascript_onload %}
+        }
+        jQuery().ready(initialize);
+        {% block facebook_js %}
+            facebookAppId = '{{ FACEBOOK_APP_ID }}';
+            facebookDefaultScope = {{ FACEBOOK_DEFAULT_SCOPE_JS }};
+            staticUrl = '{{ STATIC_URL }}';
+            function facebookJSLoaded(){
+                FB.init({appId: facebookAppId, status: false, cookie: true, xfbml: true, oauth: true});
+            }
+            window.fbAsyncInit = facebookJSLoaded;
+            F = new facebookClass(facebookAppId);
+            F.load();
+        {% endblock %}
+        
+        {% block javascript %}
+        {% endblock javascript %}
+        
+        /* ]]> */
+    </script>
+    {% endcompress %}
+    {% endblock %}
+</body>
+</html>
